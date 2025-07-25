@@ -1,0 +1,121 @@
+:host {
+    background-color: #f0f2f5;
+}
+
+.content {
+    height: 100%;
+    width: 100%;
+    padding-bottom: 5rem; 
+}
+
+.options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+.option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease-in-out;
+    width: 200px; 
+    height: 200px;
+    text-align: center;
+}
+
+.option:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.option mat-icon {
+    font-size: 4rem; 
+    width: auto;
+    height: auto;
+    margin-bottom: 1rem; 
+    color: #333;
+}
+
+.option .title h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+    color: #555;
+}
+
+.saldo-container {
+    position: fixed;
+    bottom: 1rem;
+    right: 2rem;
+    background-color: #ffffff;
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    font-weight: bold;
+    font-size: 1rem;
+    z-index: 1000;
+    color: #2c3e50;
+}
+
+@media (max-width: 992px) {
+    .options {
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+
+    .option {
+        width: 180px;
+        height: 180px;
+    }
+
+    .option mat-icon {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .option {
+        width: calc(50% - 1rem);
+        height: 160px;
+        padding: 1rem;
+    }
+
+    .option mat-icon {
+        font-size: 3rem;
+    }
+
+    .option .title h2 {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .options {
+        flex-direction: column; 
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .option {
+        width: 90%; 
+        height: auto; 
+        padding: 1.5rem;
+    }
+
+    .saldo-container {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        text-align: center;
+    }
+}

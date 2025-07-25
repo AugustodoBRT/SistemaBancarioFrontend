@@ -1,0 +1,54 @@
+<app-nav-bar></app-nav-bar>
+
+@if(accountsOrigem$ | async; as accountsOrigem){
+@if(accountsDestino$ | async; as accountsDestino) {
+<div class="content">
+  <button class="btn-back" (click)="goBack()" aria-label="Voltar para menu">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <h2>Transferência</h2>
+
+  <div class="select">
+    <div class="ffield">
+      <h2>Conta de Origem</h2>
+      <div class="inputs">
+        <mat-form-field class="field-account" appearance="outline" (click)="onSelectOrigemClick()">
+          <mat-label>Selecione uma conta</mat-label>
+          <mat-select [(ngModel)]="selectedAccountOrigem" name="selectedAccountOrigem">
+            @for (accountOrigem of accountsOrigem; track accountOrigem.numero) {
+            <mat-option [value]="accountOrigem.numero">{{accountOrigem.numero}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="ffield">
+      <h2>Conta de Destino</h2>
+      <div class="inputs">
+        <mat-form-field class="field-account" appearance="outline" (click)="onSelectDestinoClick()">
+          <mat-label>Selecione uma conta</mat-label>
+          <mat-select [(ngModel)]="selectedAccountDestino" name="selectedAccountDestino">
+            @for (accountDestino of accountsDestino; track accountDestino.numero) {
+            <mat-option [value]="accountDestino.numero">{{accountDestino.numero}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="value-div">
+      <h2 class="value-title">Valor</h2>
+      <mat-form-field class="field-value" appearance="outline">
+        <input matInput placeholder="Digite o valor do saque" [value]="displayPrice" (input)="onPriceInput($event)"
+          (keydown)="allowOnlyNumbers($event)" [formControl]="valor" maxLength="10">
+      </mat-form-field>
+      <button (click)="onTransference()" type="button" class="btn btn-primary button">
+        Confirmar
+      </button>
+    </div>
+  </div>
+
+</div>
+}
+}

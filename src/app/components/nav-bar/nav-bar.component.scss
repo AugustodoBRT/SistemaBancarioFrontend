@@ -1,0 +1,51 @@
+.nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 4rem;
+    flex-wrap: wrap;
+    height: 7rem;
+}
+
+.div-divider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.divider {
+    width: 95%;
+    border: none;
+    opacity: 1;
+    height: 4px;
+    background-color: #000066;
+    border-radius: 1px;
+}
+
+svg {
+    margin: 0;
+    cursor: pointer;
+}
+
+svg:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.user-info {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+@media (max-width: 480px) {
+    .nav {
+        flex-direction: column;
+        padding: 1rem;
+        height: 11rem;
+    }
+}
+
+

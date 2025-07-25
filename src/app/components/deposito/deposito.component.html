@@ -1,0 +1,35 @@
+<app-nav-bar></app-nav-bar>
+@if(accounts$ | async; as accounts){
+<div class="content">
+    <button class="btn-back" (click)="goBack()" aria-label="Voltar para menu">
+        <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h2>Depósito</h2>
+
+    <div class="select">
+        <h2>Conta</h2>
+        <div class="inputs">
+            <mat-form-field class="field-account" appearance="outline" (click)="onSelectClick()">
+                <mat-label>Selecione uma conta</mat-label>
+                <mat-select [(ngModel)]="selectedAccount" name="selectedAccount">
+                    @for (account of accounts; track account.numero) {
+                    <mat-option [value]="account.numero">{{account.numero}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+
+            <div class="value-div">
+                <h2 class="value-title">Valor</h2>
+                <mat-form-field class="field-value" appearance="outline">
+                    <input matInput placeholder="Digite o valor do depósito" [value]="displayPrice"
+                        (input)="onPriceInput($event)" (keydown)="allowOnlyNumbers($event)" [formControl]="valor" maxLength="10">
+                </mat-form-field>
+
+                <button (click)="onDeposit()" type="button" class="btn btn-primary button">
+                    Confirmar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+}

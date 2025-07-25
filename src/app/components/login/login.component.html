@@ -1,0 +1,50 @@
+<div class="login-page-wrapper">
+  <div class="login-card">
+
+    <div class="login-header">
+      <svg class="title-icon" width="80" height="80" xmlns="http://www.w3.org/2000/svg">
+        <rect width="80" height="80" rx="12" ry="12" fill="#000066" />
+        <circle cx="40" cy="40" r="24" fill="none" stroke="white" stroke-width="6" />
+      </svg>
+      <h1>Bank</h1>
+      <h2>O banco que entende você</h2>
+    </div>
+
+    <div class="login-form">
+      <mat-form-field appearance="outline">
+        <mat-label>CPF</mat-label>
+        <input matInput placeholder="000.000.000-00" type="text" [formControl]="cpf" mask="000.000.000-00">
+        <mat-error *ngIf="cpf.hasError('required')">CPF é obrigatório</mat-error>
+        <mat-error *ngIf="cpf.hasError('cpfLength') && !cpf.hasError('required')">
+          CPF deve ter 11 dígitos
+        </mat-error>
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Senha</mat-label>
+        <input matInput [type]="hidePassword ? 'password' : 'text'" placeholder="Digite sua Senha" [formControl]="senha" maxLength="20">
+        <button mat-icon-button matSuffix (click)="togglePasswordVisibility()" type="button">
+          <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="senha.hasError('required')">Senha é obrigatória</mat-error>
+        <mat-error *ngIf="senha.hasError('minlength')">Senha deve conter no mínimo 3 caracteres</mat-error>
+        <mat-hint align="end" [ngClass]="{'limit-reached': senha.value?.length === 20}">
+          {{ senha.value?.length || 0 }} / 20
+        </mat-hint>
+      </mat-form-field>
+
+      <div (click)="forgotPassword()" class="forgot-password-container">
+        <a class="forgot-password-link">Esqueci minha senha</a>
+      </div>
+    </div>
+
+    <div class="login-actions">
+      <button (click)="onLogin()" type="button" class="login-button">Login</button>
+      <div class="register-container">
+        <span>Não tem uma conta?</span>
+        <a (click)="goToRegister()" class="register-link">Cadastre-se</a>
+      </div>
+    </div>
+
+  </div>
+</div>

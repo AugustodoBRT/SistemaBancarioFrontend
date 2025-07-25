@@ -1,0 +1,51 @@
+@if(accounts$ | async; as accounts){
+    <app-nav-bar></app-nav-bar>
+<div class="content">
+    <button class="btn-back" (click)="goBack()" aria-label="Voltar para menu">
+        <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h1>Extrato</h1>
+    <div class="select">
+        <h2>Conta</h2>
+        <mat-form-field class="field-account" appearance="outline" (click)="onSelectClick()">
+            <mat-label>Selecione uma conta</mat-label>
+            <mat-select [(ngModel)]="selectedAccount" name="selectedAccount">
+                @for (account of accounts; track account.numero) {
+                <mat-option [value]="account.numero">{{account.numero}}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class = "button-check">
+        <button (click)="onSearch()" type="button" class="btn btn-primary button">Consultar</button>
+    </div>
+    <div class="table">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="data">
+                <th mat-header-cell *matHeaderCellDef> Data </th>
+                <td mat-cell *matCellDef="let item"> {{item.data}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="valor">
+                <th mat-header-cell *matHeaderCellDef> Valor </th>
+                <td mat-cell *matCellDef="let item"> {{item.valor ? (item.valor | currency:'BRL':'symbol':'1.2-2') : 'R$ 0,00'}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="tipo">
+                <th mat-header-cell *matHeaderCellDef> Tipo </th>
+                <td mat-cell *matCellDef="let item"> {{item.tipo}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="tipoOperacao">
+                <th mat-header-cell *matHeaderCellDef> Operação </th>
+                <td mat-cell *matCellDef="let item"> {{item.tipoOperacao}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+}

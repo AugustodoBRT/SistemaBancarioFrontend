@@ -1,0 +1,56 @@
+<app-nav-bar></app-nav-bar>
+<div class="content">
+    <div class="options">
+        <div class="option" (click)="goToAccount()">
+            <mat-icon>account_box</mat-icon>
+            <div class="title">
+                <h2>Contas</h2>
+            </div>
+        </div>
+        <div class="option" (click)="goToWithdrawal()">
+            <mat-icon>remove_circle_outline</mat-icon>
+            <div class="title">
+                <h2>Saque</h2>
+            </div>
+        </div>
+        <div class="option" (click)="goToDeposit()">
+            <mat-icon>add_circle_outline</mat-icon>
+            <div class="title">
+                <h2>Depósito</h2>
+            </div>
+        </div>
+        <div class="option" (click)="goToTransference()">
+            <mat-icon>swap_horiz</mat-icon>
+            <div class="title">
+                <h2>Transferência</h2>
+            </div>
+        </div>
+        <div class="option" (click)="goToPix()">
+            <mat-icon>qr_code</mat-icon>
+            <div class="title">
+                <h2>Pix</h2>
+            </div>
+        </div>
+        <div class="option" (click)="goToBankStatement()">
+            <mat-icon>description</mat-icon>
+            <div class="title">
+                <h2>Extrato</h2>
+            </div>
+        </div>
+        <div class="option" (click)="goToAccess()">
+            <mat-icon>manage_accounts</mat-icon>
+            <div class="title">
+                <h2>Acessos</h2>
+            </div>
+        </div>
+        <div class="option" (click)="logout()">
+            <mat-icon>exit_to_app</mat-icon>
+            <div class="title">
+                <h2>Sair</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="saldo-container">
+  <p>Saldo total das contas: R$ {{ saldo}}</p>
+</div>
